@@ -35,7 +35,7 @@ export default function AccountCharts({ transactions, compact }: { transactions:
                 <CartesianGrid {...c.grid} vertical={false} />
                 <XAxis dataKey="name" {...c.axis} />
                 <YAxis {...c.axis} tickFormatter={axisMoney} />
-                <Tooltip {...c.tooltip} formatter={(v: number) => formatMoney(v)} cursor={{ fill: "hsl(var(--muted))", opacity: 0.4 }} />
+                <Tooltip {...c.tooltip} formatter={(v: number) => formatMoney(v)} cursor={{ fill: "hsl(var(--raised))", opacity: 0.4 }} />
                 <Bar dataKey="value" name="Net" {...c.bar(1)} />
               </BarChart>
             </ResponsiveContainer>
@@ -54,7 +54,7 @@ export default function AccountCharts({ transactions, compact }: { transactions:
                 <Pie
                   data={spending} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={compact ? 70 : 85}
                   innerRadius={c.ui === "gtk4" || c.ui === "win11" ? 45 : 0}
-                  stroke="hsl(var(--card))" strokeWidth={c.ui === "winxp" ? 1 : 2}
+                  stroke="hsl(var(--surface))" strokeWidth={c.ui === "winxp" ? 1 : 2}
                   isAnimationActive={c.cs.animateMs > 0} animationDuration={c.cs.animateMs}
                   label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`} labelLine={false}
                   fontSize={c.cs.fontSize}
