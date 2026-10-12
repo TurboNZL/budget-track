@@ -1,8 +1,11 @@
-export const inputCls = "bg-muted border-border text-foreground rounded-lg px-3 py-2 w-full";
-export const triggerCls = "bg-muted border-border text-foreground rounded-lg px-3 py-2 w-full";
+// The look of fields, cards and buttons belongs to the UI style (turbothemes): the primitives in components/ui carry the hook
+// classes (.input .card .btn), so nothing here may set colours, borders or radii or it would beat the style. Kept so call sites
+// can still say what they mean.
+export const inputCls = "";
+export const triggerCls = "";
+export const primaryBtnCls = "";
+export const cardCls = "";
 export const labelCls = "block text-sm font-medium mb-1 text-foreground/80";
-export const primaryBtnCls = "bg-primary hover:bg-primary/90 text-primary-foreground border-0";
-export const cardCls = "bg-card border-border";
 export const todayStr = () => {
   const d = new Date();
   const pad = (n: number) => String(n).padStart(2, "0");

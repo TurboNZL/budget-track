@@ -167,9 +167,9 @@ export default function GraphsTab() {
                   <ChartDefs /><CartesianGrid {...c.grid} horizontal={false} />
                   <XAxis type="number" stroke={AXIS} fontSize={c.cs.fontSize} tickFormatter={axisMoney} />
                   <YAxis type="category" dataKey="name" stroke={AXIS} fontSize={c.cs.fontSize} width={90} />
-                  <Tooltip {...tooltipProps} cursor={{ fill: "hsl(var(--muted))", opacity: 0.4 }} />
+                  <Tooltip {...tooltipProps} cursor={{ fill: "hsl(var(--raised))", opacity: 0.4 }} />
                   <Legend />
-                  <Bar dataKey="owe" name="I owe them" {...c.bar(3)} fill={c.cs.finish === "flat" ? "hsl(var(--negative))" : c.bar(3).fill} maxBarSize={20} />
+                  <Bar dataKey="owe" name="I owe them" {...c.bar(3)} fill={c.cs.finish === "flat" ? "hsl(var(--bad))" : c.bar(3).fill} maxBarSize={20} />
                   <Bar dataKey="owed" name="They owe me" {...c.bar(1)} maxBarSize={20} />
                 </BarChart>
               </ResponsiveContainer>
@@ -191,7 +191,7 @@ export default function GraphsTab() {
                   <ChartDefs /><CartesianGrid {...c.grid} horizontal={false} />
                   <XAxis type="number" stroke={AXIS} fontSize={c.cs.fontSize} tickFormatter={axisMoney} />
                   <YAxis type="category" dataKey="name" stroke={AXIS} fontSize={c.cs.fontSize} width={90} />
-                  <Tooltip {...tooltipProps} cursor={{ fill: "hsl(var(--muted))", opacity: 0.4 }} />
+                  <Tooltip {...tooltipProps} cursor={{ fill: "hsl(var(--raised))", opacity: 0.4 }} />
                   <Bar dataKey="balance" name="Balance" {...c.bar(1)} maxBarSize={20} />
                 </BarChart>
               </ResponsiveContainer>
@@ -219,7 +219,7 @@ export default function GraphsTab() {
                   <Tooltip {...tooltipProps} />
                   <Legend />
                   {payoff.owe.remaining > 0 && (
-                    <Line type={c.ui === "winxp" || c.ui === "win10" ? "linear" : "monotone"} dataKey="owe" name="I owe" {...c.line(3)} stroke="hsl(var(--negative))" dot={false} />
+                    <Line type={c.ui === "winxp" || c.ui === "win10" ? "linear" : "monotone"} dataKey="owe" name="I owe" {...c.line(3)} stroke="hsl(var(--bad))" dot={false} />
                   )}
                   {payoff.owed.remaining > 0 && (
                     <Line type={c.ui === "winxp" || c.ui === "win10" ? "linear" : "monotone"} dataKey="owed" name="Owed to me" {...c.line(1)} dot={false} />
@@ -293,7 +293,7 @@ export default function GraphsTab() {
                 <ChartDefs /><CartesianGrid {...c.grid} horizontal={false} />
                 <XAxis type="number" stroke={AXIS} fontSize={c.cs.fontSize} tickFormatter={axisMoney} />
                 <YAxis type="category" dataKey="name" stroke={AXIS} fontSize={c.cs.fontSize} width={100} />
-                <Tooltip {...tooltipProps} cursor={{ fill: "hsl(var(--muted))", opacity: 0.4 }} />
+                <Tooltip {...tooltipProps} cursor={{ fill: "hsl(var(--raised))", opacity: 0.4 }} />
                 <Bar dataKey="value" name="Per month" {...c.bar(2)} maxBarSize={20} />
               </BarChart>
             </ResponsiveContainer>

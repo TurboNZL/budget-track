@@ -1,6 +1,5 @@
 import type { CSSProperties } from "react";
-import { useAppearance } from "@/lib/appearance";
-import type { UiStyleId } from "@/lib/uiStyle";
+import { useAppearance } from "@/lib/themes";
 
 /**
  * Chart look per UI style, so graphs match the rest of the interface: corner shapes, bar finish,
@@ -22,19 +21,19 @@ export type ChartStyle = {
 };
 
 const base: CSSProperties = {
-  backgroundColor: "hsl(var(--popover))",
-  border: "1px solid hsl(var(--border))",
-  color: "hsl(var(--popover-foreground))",
+  backgroundColor: "hsl(var(--surface))",
+  border: "1px solid hsl(var(--line))",
+  color: "hsl(var(--fg))",
   borderRadius: 8,
 };
 
-const STYLES: Record<UiStyleId, ChartStyle> = {
+const STYLES: Record<string, ChartStyle> = {
   default: { barRadius: 4, finish: "flat", grid: "3 3", gridOpacity: 1, lineWidth: 2, dot: "round", animateMs: 500, easing: "ease-out", fontSize: 12, tooltip: base },
   gtk4: { barRadius: 8, finish: "flat", grid: "0", gridOpacity: 0.5, lineWidth: 3, dot: "round", animateMs: 700, easing: "ease-in-out", fontSize: 12, tooltip: { ...base, borderRadius: 12, border: "0", boxShadow: "0 2px 12px rgb(0 0 0 / 0.35)" } },
   breeze: { barRadius: 2, finish: "outline", grid: "1 3", gridOpacity: 1, lineWidth: 1.5, dot: "round", animateMs: 300, easing: "ease-in-out", fontSize: 11, tooltip: { ...base, borderRadius: 3, boxShadow: "0 2px 6px rgb(0 0 0 / 0.35)" } },
   win11: { barRadius: 4, finish: "flat", grid: "0", gridOpacity: 0.7, lineWidth: 2.5, dot: "round", animateMs: 600, easing: "ease-out", fontSize: 12, tooltip: { ...base, borderRadius: 8, boxShadow: "0 8px 20px rgb(0 0 0 / 0.3)" } },
   win10: { barRadius: 0, finish: "flat", grid: "0", gridOpacity: 0.8, lineWidth: 2, dot: "square", animateMs: 250, easing: "linear", fontSize: 12, tooltip: { ...base, borderRadius: 0, borderWidth: 2 } },
-  win7: { barRadius: 3, finish: "gloss", grid: "0", gridOpacity: 0.9, lineWidth: 2, dot: "round", animateMs: 800, easing: "ease-out", fontSize: 12, tooltip: { ...base, borderRadius: 4, background: "linear-gradient(to bottom, hsl(var(--popover)), color-mix(in srgb, hsl(var(--primary)) 15%, hsl(var(--popover))))", boxShadow: "3px 3px 5px rgb(0 0 0 / 0.35)" } },
+  win7: { barRadius: 3, finish: "gloss", grid: "0", gridOpacity: 0.9, lineWidth: 2, dot: "round", animateMs: 800, easing: "ease-out", fontSize: 12, tooltip: { ...base, borderRadius: 4, background: "linear-gradient(to bottom, hsl(var(--surface)), color-mix(in srgb, hsl(var(--accent)) 15%, hsl(var(--surface))))", boxShadow: "3px 3px 5px rgb(0 0 0 / 0.35)" } },
   win98: { barRadius: 0, finish: "bevel", grid: "0", gridOpacity: 1, lineWidth: 2, dot: "square", animateMs: 0, easing: "linear", fontSize: 11, tooltip: { backgroundColor: "#ffffe1", color: "#000", border: "1px solid #000", borderRadius: 0, fontSize: 11 } },
   macos: { barRadius: 5, finish: "flat", grid: "0", gridOpacity: 0.6, lineWidth: 2.5, dot: "round", animateMs: 600, easing: "ease-out", fontSize: 12, tooltip: { ...base, borderRadius: 10, border: "0", boxShadow: "0 6px 24px rgb(0 0 0 / 0.28)" } },
   material: { barRadius: 8, finish: "flat", grid: "0", gridOpacity: 0.5, lineWidth: 3, dot: "round", animateMs: 500, easing: "ease-in-out", fontSize: 12, tooltip: { ...base, borderRadius: 12, border: "0", boxShadow: "0 3px 10px rgb(0 0 0 / 0.3)" } },
@@ -42,16 +41,19 @@ const STYLES: Record<UiStyleId, ChartStyle> = {
 };
 
 export const CHART_COLORS = [1, 2, 3, 4, 5, 6].map((n) => `hsl(var(--chart-${n}))`);
-export const AXIS = "hsl(var(--muted-foreground))";
-export const GRID = "hsl(var(--border))";
-export const NEGATIVE = "hsl(var(--negative))";
-export const POSITIVE = "hsl(var(--positive))";
+export const AXIS = "hsl(var(--muted))";
+export const GRID = "hsl(var(--line))";
+export const NEGATIVE = "hsl(var(--bad))";
+export const POSITIVE = "hsl(var(--good))";
 
-export const getChartStyle = (ui: UiStyleId): ChartStyle => STYLES[ui];
+/** UI styles with no chart look of their own borrow the closest family's. */
+const CHART_FAMILY: Record<string, string> = { aqua: "macos", liquid: "macos", yaru: "gtk4", oneui: "material" };
+
+export const getChartStyle = (ui: string): ChartStyle => STYLES[ui] ?? STYLES[CHART_FAMILY[ui]] ?? STYLES.default;
 
 export function useChartStyle() {
   const { ui } = useAppearance();
-  const cs = STYLES[ui];
+  const cs = getChartStyle(ui);
   return {
     ui,
     cs,
@@ -82,9 +84,9 @@ export function useChartStyle() {
 }
 
 /** Gradient definitions for the glossy / bevelled bar finishes. Put inside a chart. */
-export function ChartDefs({ ui, prefix = "bt" }: { ui?: UiStyleId; prefix?: string } = {}) {
+export function ChartDefs({ ui, prefix = "bt" }: { ui?: string; prefix?: string } = {}) {
   const current = useChartStyle();
-  const cs = ui ? STYLES[ui] : current.cs;
+  const cs = ui ? getChartStyle(ui) : current.cs;
   if (cs.finish !== "gloss" && cs.finish !== "bevel") return null;
   return (
     <defs>

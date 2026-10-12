@@ -91,8 +91,8 @@ export default function Index() {
   };
 
   return (
-    <div className="bt-root min-h-screen bg-background text-foreground">
-      <header className="sticky top-0 z-30 border-b border-border bg-background/90 backdrop-blur">
+    <div className="bt-root flex min-h-screen flex-col bg-background text-foreground">
+      <header className="bt-top sticky top-0 z-30 backdrop-blur">
         <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 py-3">
           <div className="flex flex-wrap justify-between items-center gap-3">
             <div className="flex items-center gap-3 min-w-0">
@@ -137,11 +137,11 @@ export default function Index() {
         onCancel={() => setUnloadOpen(false)}
       />
 
-      <main className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 py-4">
+      <main className="mx-auto w-full max-w-[1800px] flex-1 px-4 sm:px-6 py-4">
         <Tabs value={activeTab} onValueChange={(v) => { setActiveTab(v); writeStored(TAB_KEY, v); }} className="space-y-4">
           <TabsList className="bg-card border border-border h-auto flex-wrap justify-start">
             {TABS.map(([value, label, Icon]) => (
-              <TabsTrigger key={value} value={value} aria-label={label} title={label} className="gap-2 text-muted-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+              <TabsTrigger key={value} value={value} aria-label={label} title={label} className="gap-2">
                 <Icon className="w-4 h-4" />
                 <span className="hidden sm:inline">{label}</span>
               </TabsTrigger>

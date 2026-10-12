@@ -1,5 +1,6 @@
 import type { LucideIcon } from "lucide-react";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { X } from "lucide-react";
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { primaryBtnCls } from "./styles";
@@ -33,8 +34,9 @@ export default function EntryDialog({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
+        closeButton={false}
         className={cn(
-          "bt-window max-h-[92dvh] overflow-y-auto p-6 gap-0 w-[calc(100vw-1.5rem)]",
+          "max-h-[92dvh] overflow-y-auto gap-0 w-[calc(100vw-1.5rem)]",
           wide ? "max-w-2xl" : "max-w-lg"
         )}
         onOpenAutoFocus={(e) => {
@@ -52,17 +54,20 @@ export default function EntryDialog({
             void onSubmit();
           }}
         >
-          <DialogHeader className="bt-titlebar text-left">
+          <DialogHeader className="bt-titlebar !flex-row items-center space-y-0 text-left">
             <DialogTitle className="flex items-center gap-2">
               {Icon && <Icon className="w-5 h-5 text-primary shrink-0" />}
               {title}
             </DialogTitle>
             {!description && <DialogDescription className="sr-only">{title}</DialogDescription>}
+            <DialogClose className="bt-close" aria-label="Close"><X className="h-4 w-4" /></DialogClose>
           </DialogHeader>
           {/* The window's content area. Styles with a framed window (Aero, Luna, Windows 98) draw it as a panel. */}
-          <div className="bt-body">
+          <div className="bt-body px-5">
             {description && <DialogDescription className="pt-3">{description}</DialogDescription>}
             <div className="space-y-4 py-4">{children}</div>
+          </div>
+          <div className="bt-footer px-5 py-3">
             <DialogFooter className="gap-2 sm:gap-2 sm:items-center">
               {footerStart && <div className="sm:mr-auto">{footerStart}</div>}
               <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>

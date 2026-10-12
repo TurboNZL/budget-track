@@ -51,7 +51,7 @@ export default function MoreCharts({ accounts, transactions, subs, debts, rates,
                 <ChartDefs /><CartesianGrid {...c.grid} vertical={false} />
                 <XAxis dataKey="label" {...c.axis} minTickGap={16} />
                 <YAxis {...c.axis} tickFormatter={axisMoney} />
-                <Tooltip {...tooltipProps} cursor={{ fill: "hsl(var(--muted))", opacity: 0.4 }} />
+                <Tooltip {...tooltipProps} cursor={{ fill: "hsl(var(--raised))", opacity: 0.4 }} />
                 <Legend />
                 <Bar dataKey="income" name="Income" {...c.bar(1)} maxBarSize={28} />
                 <Bar dataKey="spending" name="Spending" {...c.bar(3)} maxBarSize={28} />
@@ -117,7 +117,7 @@ export default function MoreCharts({ accounts, transactions, subs, debts, rates,
                 <ChartDefs /><CartesianGrid {...c.grid} vertical={false} />
                 <XAxis dataKey="name" {...c.axis} />
                 <YAxis {...c.axis} tickFormatter={axisMoney} />
-                <Tooltip {...tooltipProps} cursor={{ fill: "hsl(var(--muted))", opacity: 0.4 }} />
+                <Tooltip {...tooltipProps} cursor={{ fill: "hsl(var(--raised))", opacity: 0.4 }} />
                 <Bar dataKey="value" name="Spent" {...c.bar(4)} maxBarSize={36} />
               </BarChart>
             </ResponsiveContainer>
@@ -161,7 +161,7 @@ export default function MoreCharts({ accounts, transactions, subs, debts, rates,
                 <ChartDefs /><CartesianGrid {...c.grid} horizontal={false} />
                 <XAxis type="number" {...c.axis} tickFormatter={axisMoney} />
                 <YAxis type="category" dataKey="name" {...c.axis} width={100} />
-                <Tooltip {...tooltipProps} cursor={{ fill: "hsl(var(--muted))", opacity: 0.4 }} />
+                <Tooltip {...tooltipProps} cursor={{ fill: "hsl(var(--raised))", opacity: 0.4 }} />
                 <Bar dataKey="value" name="Per month" {...c.bar(5)} maxBarSize={20} />
               </BarChart>
             </ResponsiveContainer>
@@ -181,7 +181,7 @@ export default function MoreCharts({ accounts, transactions, subs, debts, rates,
                 <ChartDefs /><CartesianGrid {...c.grid} horizontal={false} />
                 <XAxis type="number" {...c.axis} tickFormatter={axisMoney} />
                 <YAxis type="category" dataKey="name" {...c.axis} width={100} />
-                <Tooltip {...tooltipProps} cursor={{ fill: "hsl(var(--muted))", opacity: 0.4 }} />
+                <Tooltip {...tooltipProps} cursor={{ fill: "hsl(var(--raised))", opacity: 0.4 }} />
                 <Legend />
                 <Bar dataKey="paid" name="Paid off" stackId="d" {...c.bar(1)} radius={0} maxBarSize={20} />
                 <Bar dataKey="remaining" name="Remaining" stackId="d" {...c.bar(3)} radius={0} maxBarSize={20} />

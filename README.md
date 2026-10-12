@@ -17,16 +17,16 @@ Built with React, TypeScript, Vite, Tailwind CSS, shadcn/ui and Recharts.
 
 ### Appearance
 
-33 colour themes (plus "System") and 10 UI styles, in any combination, with a framed live preview:
+The look comes from the [turbothemes](https://github.com/TurboNZL/turbothemes) repository: 33 UI styles and 67 colour palettes (plus "Match this device" and "System"), in any combination, with a framed live preview and an optional wallpaper. Themes are plain JSON and CSS in that repository, and the app checks it in the background (at most every six hours) and picks up new or fixed themes without a BudgetTrack update. Settings > Appearance shows which set is in use and can check now or go back to the built-in set.
 
-- UI styles: Default, GTK 4 (Adwaita), KDE Breeze, Windows 11, Windows 10, Windows 7 (Aero), Windows XP (Luna), Windows 98, macOS and Material 3.
-- Platform colour themes (Adwaita, Breeze, Windows 11 / 10 / 7 / XP / 98, macOS, Material You, plus a darkened Windows 7) pair with their matching style, and "Use matching colours" applies the right one.
-
-The logo and favicon follow the chosen theme and style. Free fonts are bundled (Inter, Cantarell, Noto Sans, Open Sans, DejaVu Sans, Roboto); Segoe UI, Tahoma and the system UI font are used when installed. The styles imitate the *look* of these platforms with original CSS; no vendor assets are included, and all names belong to their owners.
+- The engine is started in `src/lib/themes.ts`; `tailwind.config.ts` points the shadcn colour names at the variables the palettes set, and the primitives in `src/components/ui` carry turbothemes' hook classes (`.btn`, `.input`, `.card`, `.bt-window`, `.bt-menu` ...). See turbothemes' `docs/CONTRACT.md`.
+- Chart colours are derived from the palette's accent in `src/lib/themes.ts`.
+- Only the theme files are fetched from GitHub. Fonts for a style are loaded from jsDelivr when that style is used; offline, the system fonts are used instead.
+- Update the engine itself with `pnpm add github:TurboNZL/turbothemes#<commit>`; theme changes never need it.
 
 ## Privacy
 
-- No analytics, no network requests for your data, no API keys, no backend.
+- No analytics, no API keys, no backend, and no network request ever carries your data. The only outgoing requests are for the look: theme files from GitHub and style fonts from jsDelivr (set `source: false` and `fonts: "none"` in `src/lib/themes.ts` to stop both).
 - Anything you enter lives in your browser's `localStorage`. Clearing site data removes it, so export a `.db` file for backups.
 - `.db` exports contain your financial data. Keep them out of public repositories.
 

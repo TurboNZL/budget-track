@@ -253,7 +253,7 @@ function Marker({
             background: k.skipped ? "transparent" : `hsl(${KIND_COLOR[kind]})`,
             borderColor: `hsl(${KIND_COLOR[kind]})`,
             color: k.skipped ? `hsl(${KIND_COLOR[kind]})` : "#fff",
-            outline: moved ? "2px dashed hsl(var(--foreground) / 0.7)" : undefined, outlineOffset: 1,
+            outline: moved ? "2px dashed hsl(var(--fg) / 0.7)" : undefined, outlineOffset: 1,
           }}
         >
           {k.skipped ? <Ban className="w-3.5 h-3.5" /> : <Icon className="w-3.5 h-3.5" />}

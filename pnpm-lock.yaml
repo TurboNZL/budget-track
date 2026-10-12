@@ -17,24 +17,6 @@ importers:
       '@dnd-kit/utilities':
         specifier: ^3.2.2
         version: 3.2.2(react@19.2.3)
-      '@fontsource-variable/inter':
-        specifier: ^5.3.0
-        version: 5.3.0
-      '@fontsource/cantarell':
-        specifier: ^5.3.0
-        version: 5.3.0
-      '@fontsource/dejavu-sans':
-        specifier: ^5.3.0
-        version: 5.3.0
-      '@fontsource/noto-sans':
-        specifier: ^5.3.0
-        version: 5.3.0
-      '@fontsource/open-sans':
-        specifier: ^5.3.0
-        version: 5.3.0
-      '@fontsource/roboto':
-        specifier: ^5.3.0
-        version: 5.3.0
       '@hookform/resolvers':
         specifier: ^3.9.0
         version: 3.10.0(react-hook-form@7.55.0(react@19.2.3))
@@ -179,6 +161,9 @@ importers:
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.17)
+      turbothemes:
+        specifier: github:TurboNZL/turbothemes#2735f534753af8da69a00b30fd7ce0d1221e2e66
+        version: git+https://git@github.com:TurboNZL/turbothemes.git#2735f534753af8da69a00b30fd7ce0d1221e2e66
       vaul:
         specifier: ^0.9.3
         version: 0.9.9(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -516,24 +501,6 @@ packages:
 
   '@floating-ui/utils@0.2.9':
     resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
-
-  '@fontsource-variable/inter@5.3.0':
-    resolution: {integrity: sha512-OupL48va4JNofb97w6NYeF9S7W/kHNKM0Er8Dem5nqi4jeOLrVJDoE8tZEpnMJmtkvNbB1EIPPwHcdkF6b1oUA==}
-
-  '@fontsource/cantarell@5.3.0':
-    resolution: {integrity: sha512-yvnAq3ymu9OPTGZWOKczMi10R5gC+2p2qBHu26sEZz8ZXjkRWXZnOAnDclUHV4LK3DQZW8amhwecRjXduPGg1A==}
-
-  '@fontsource/dejavu-sans@5.3.0':
-    resolution: {integrity: sha512-F/tV+7S31Mo8jtGUhj857XfUzcDCl9JJC8bzMtZ0wcTuOm89dG4FPjAOHOesMfmoChYVQ3eg5fHafdhxFrQIxQ==}
-
-  '@fontsource/noto-sans@5.3.0':
-    resolution: {integrity: sha512-fBCog2PY7DiVVTEEqtI/Qdinx/knobHYfoGpjFXdfBX5RoJaBp1Prw2G75p0OIsdlMZg3cLo0c+YbIUYOxnQJw==}
-
-  '@fontsource/open-sans@5.3.0':
-    resolution: {integrity: sha512-V1bdMlGNyZrJwzrdusshMOw2YR0aqYDL7kOo9dkxUEKl8dFv66A9HLckOOXl572sG/7ohhDQrCrTFGSn9LZcSw==}
-
-  '@fontsource/roboto@5.3.0':
-    resolution: {integrity: sha512-BapRJOWYP+LZ21zp+wBQjfpPYKRoxc4LspJ/RLuI+HSMBD5u/X4O+ESDrSvEqDSy0rAl7GwBJ+09mdc16cVQ1Q==}
 
   '@hookform/resolvers@3.10.0':
     resolution: {integrity: sha512-79Dv+3mDF7i+2ajj7SkypSKHhl1cbln1OGavqrsF7p6mbUv11xpqpacPsGDCTRvCSjEEIez2ef1NveSVL3b0Ag==}
@@ -2545,6 +2512,12 @@ packages:
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
+  turbothemes@git+https://git@github.com:TurboNZL/turbothemes.git#2735f534753af8da69a00b30fd7ce0d1221e2e66:
+    resolution: {commit: 2735f534753af8da69a00b30fd7ce0d1221e2e66, repo: git@github.com:TurboNZL/turbothemes.git, type: git}
+    version: 1.0.0
+    engines: {node: '>=22.6'}
+    hasBin: true
+
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
     engines: {node: '>= 0.8.0'}
@@ -2890,18 +2863,6 @@ snapshots:
       react-dom: 19.2.3(react@19.2.3)
 
   '@floating-ui/utils@0.2.9': {}
-
-  '@fontsource-variable/inter@5.3.0': {}
-
-  '@fontsource/cantarell@5.3.0': {}
-
-  '@fontsource/dejavu-sans@5.3.0': {}
-
-  '@fontsource/noto-sans@5.3.0': {}
-
-  '@fontsource/open-sans@5.3.0': {}
-
-  '@fontsource/roboto@5.3.0': {}
 
   '@hookform/resolvers@3.10.0(react-hook-form@7.55.0(react@19.2.3))':
     dependencies:
@@ -4864,6 +4825,8 @@ snapshots:
   ts-interface-checker@0.1.13: {}
 
   tslib@2.8.1: {}
+
+  turbothemes@git+https://git@github.com:TurboNZL/turbothemes.git#2735f534753af8da69a00b30fd7ce0d1221e2e66: {}
 
   type-check@0.4.0:
     dependencies:

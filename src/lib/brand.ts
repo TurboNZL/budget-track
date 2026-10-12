@@ -1,5 +1,4 @@
-import { resolveTheme, type ThemeId } from "./theme";
-import type { UiStyleId } from "./uiStyle";
+import { effectiveUi, resolveTheme } from "turbothemes";
 
 const hslToHex = (h: number, s: number, l: number): string => {
   const sat = s / 100;
@@ -18,13 +17,14 @@ const hslToHex = (h: number, s: number, l: number): string => {
  * accent of the selected colour theme and its corners / finish follow the UI style. The header
  * logo and the browser favicon are both drawn from this, so they always match.
  */
-export const brandSvg = (theme: ThemeId, ui: UiStyleId): string => {
+export const brandSvg = (theme: string, uiChoice: string): string => {
   const def = resolveTheme(theme);
+  const ui = effectiveUi(uiChoice);
   const [h, s, l] = def.primary;
   const c1 = hslToHex((h + 305) % 360, Math.max(s, 60), Math.min(l + 10, 66));
   const c2 = hslToHex(h, s, Math.max(Math.min(l - 4, 52), 34));
-  const rx = { default: 14, gtk4: 20, breeze: 7, win11: 16, win10: 0, win7: 9, winxp: 8, win98: 0, macos: 15, material: 22 }[ui];
-  const barRx = { default: 2, gtk4: 3.5, breeze: 1, win11: 2.5, win10: 0, win7: 1.5, winxp: 1, win98: 0, macos: 2.5, material: 4 }[ui];
+  const rx = ({ default: 14, gtk4: 20, breeze: 7, win11: 16, win10: 0, win7: 9, winxp: 8, win98: 0, macos: 15, material: 22 } as Record<string, number>)[ui] ?? 14;
+  const barRx = ({ default: 2, gtk4: 3.5, breeze: 1, win11: 2.5, win10: 0, win7: 1.5, winxp: 1, win98: 0, macos: 2.5, material: 4 } as Record<string, number>)[ui] ?? 2;
   const bars = `
   <rect x="14" y="36" width="9" height="14" rx="${barRx}" fill="#fff" fill-opacity=".75"/>
   <rect x="27.5" y="26" width="9" height="24" rx="${barRx}" fill="#fff" fill-opacity=".9"/>
@@ -46,11 +46,11 @@ export const brandSvg = (theme: ThemeId, ui: UiStyleId): string => {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs><rect width="64" height="64" rx="${rx}" fill="url(#g)"/>${bars}${gloss}</svg>`;
 };
 
-export const brandDataUri = (theme: ThemeId, ui: UiStyleId): string =>
+export const brandDataUri = (theme: string, ui: string): string =>
   `data:image/svg+xml,${encodeURIComponent(brandSvg(theme, ui).replace(/\s*\n\s*/g, ""))}`;
 
-/** Points the browser tab icon (and mobile theme colour) at the current mark. */
-export const applyFavicon = (theme: ThemeId, ui: UiStyleId) => {
+/** Points the browser tab icon at the current mark. (The mobile theme colour is kept by the engine.) */
+export const applyFavicon = (theme: string, ui: string) => {
   let link = document.querySelector<HTMLLinkElement>('link[rel="icon"][type="image/svg+xml"]');
   if (!link) {
     link = document.createElement("link");
@@ -59,6 +59,4 @@ export const applyFavicon = (theme: ThemeId, ui: UiStyleId) => {
     document.head.appendChild(link);
   }
   link.href = brandDataUri(theme, ui);
-  const meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
-  if (meta) meta.content = hslToHex(...resolveTheme(theme).vars.background.split(" ").map((p) => parseFloat(p)) as [number, number, number]);
 };
