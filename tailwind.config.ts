@@ -18,7 +18,7 @@ export default {
       },
     },
     extend: {
-      // The shadcn colour names, pointed at the variables turbothemes palettes set (see its docs/CONTRACT.md)
+      // The shadcn colour names, pointed at the variables turbothemes palettes set (see turboengine: themes/docs/CONTRACT.md)
       colors: {
         border: "hsl(var(--line))",
         input: "hsl(var(--line))",

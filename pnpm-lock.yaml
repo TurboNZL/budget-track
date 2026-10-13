@@ -162,8 +162,8 @@ importers:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.17)
       turbothemes:
-        specifier: github:TurboNZL/turbothemes#2735f534753af8da69a00b30fd7ce0d1221e2e66
-        version: git+https://git@github.com:TurboNZL/turbothemes.git#2735f534753af8da69a00b30fd7ce0d1221e2e66
+        specifier: github:TurboNZL/turboengine#6b26f2431b58ea2f1d4cdd196d3860b86b2f736c&path:/themes
+        version: https://codeload.github.com/TurboNZL/turboengine/tar.gz/6b26f2431b58ea2f1d4cdd196d3860b86b2f736c#path:/themes
       vaul:
         specifier: ^0.9.3
         version: 0.9.9(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -2512,8 +2512,8 @@ packages:
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
-  turbothemes@git+https://git@github.com:TurboNZL/turbothemes.git#2735f534753af8da69a00b30fd7ce0d1221e2e66:
-    resolution: {commit: 2735f534753af8da69a00b30fd7ce0d1221e2e66, repo: git@github.com:TurboNZL/turbothemes.git, type: git}
+  turbothemes@https://codeload.github.com/TurboNZL/turboengine/tar.gz/6b26f2431b58ea2f1d4cdd196d3860b86b2f736c#path:/themes:
+    resolution: {path: /themes, tarball: https://codeload.github.com/TurboNZL/turboengine/tar.gz/6b26f2431b58ea2f1d4cdd196d3860b86b2f736c}
     version: 1.0.0
     engines: {node: '>=22.6'}
     hasBin: true
@@ -4826,7 +4826,7 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  turbothemes@git+https://git@github.com:TurboNZL/turbothemes.git#2735f534753af8da69a00b30fd7ce0d1221e2e66: {}
+  turbothemes@https://codeload.github.com/TurboNZL/turboengine/tar.gz/6b26f2431b58ea2f1d4cdd196d3860b86b2f736c#path:/themes: {}
 
   type-check@0.4.0:
     dependencies:

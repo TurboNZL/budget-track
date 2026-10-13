@@ -1,5 +1,5 @@
 /**
- * The look of the app comes from the turbothemes engine (github.com/TurboNZL/turbothemes): palettes and UI styles live in that
+ * The look of the app comes from the turbothemes engine (turbothemes, in github.com/TurboNZL/turboengine under themes/): palettes and UI styles live in that
  * repository and reach the app through its updater, so a theme fix never needs a BudgetTrack release. This file starts the engine
  * and gives React the little it needs; the choice is remembered by the engine under `budget-track.*` in localStorage.
  */

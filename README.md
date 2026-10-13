@@ -17,12 +17,12 @@ Built with React, TypeScript, Vite, Tailwind CSS, shadcn/ui and Recharts.
 
 ### Appearance
 
-The look comes from the [turbothemes](https://github.com/TurboNZL/turbothemes) repository: 33 UI styles and 67 colour palettes (plus "Match this device" and "System"), in any combination, with a framed live preview and an optional wallpaper. Themes are plain JSON and CSS in that repository, and the app checks it in the background (at most every six hours) and picks up new or fixed themes without a BudgetTrack update. Settings > Appearance shows which set is in use and can check now or go back to the built-in set.
+The look comes from the `turbothemes` package in the [turboengine](https://github.com/TurboNZL/turboengine) repository (`themes/`; the old turbothemes repository is retired): 33 UI styles and 67 colour palettes (plus "Match this device" and "System"), in any combination, with a framed live preview and an optional wallpaper. Themes are plain JSON and CSS in `themes/`, and the app checks it in the background (at most every six hours) and picks up new or fixed themes without a BudgetTrack update. Settings > Appearance shows which set is in use and can check now or go back to the built-in set.
 
-- The engine is started in `src/lib/themes.ts`; `tailwind.config.ts` points the shadcn colour names at the variables the palettes set, and the primitives in `src/components/ui` carry turbothemes' hook classes (`.btn`, `.input`, `.card`, `.bt-window`, `.bt-menu` ...). See turbothemes' `docs/CONTRACT.md`.
+- The engine is started in `src/lib/themes.ts`; `tailwind.config.ts` points the shadcn colour names at the variables the palettes set, and the primitives in `src/components/ui` carry turbothemes' hook classes (`.btn`, `.input`, `.card`, `.bt-window`, `.bt-menu` ...). See turboengine's `themes/docs/CONTRACT.md`.
 - Chart colours are derived from the palette's accent in `src/lib/themes.ts`.
 - Only the theme files are fetched from GitHub. Fonts for a style are loaded from jsDelivr when that style is used; offline, the system fonts are used instead.
-- Update the engine itself with `pnpm add github:TurboNZL/turbothemes#<commit>`; theme changes never need it.
+- Update the engine itself with `pnpm add "github:TurboNZL/turboengine#<commit>&path:/themes"`; theme changes never need it.
 
 ## Privacy
 

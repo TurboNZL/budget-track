@@ -27,7 +27,7 @@
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
 }
 
-/* ---------- App pieces that read the style's variables (turbothemes: docs/CONTRACT.md) ---------- */
+/* ---------- App pieces that read the style's variables (turboengine: themes/docs/CONTRACT.md) ---------- */
 
 .bt-row {
   background: hsl(var(--raised));
