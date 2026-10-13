@@ -62,7 +62,7 @@
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
-    "turbothemes": "github:TurboNZL/turbothemes#2735f534753af8da69a00b30fd7ce0d1221e2e66",
+    "turbothemes": "github:TurboNZL/turboengine#6b26f2431b58ea2f1d4cdd196d3860b86b2f736c&path:/themes",
     "vaul": "^0.9.3",
     "zod": "^3.25.0"
   },
